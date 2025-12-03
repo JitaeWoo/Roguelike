@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Manager
 {
-    public static PlayerManager Game => PlayerManager.GetInstance();
+    public static PlayerManager Player => PlayerManager.GetInstance();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initailize()
