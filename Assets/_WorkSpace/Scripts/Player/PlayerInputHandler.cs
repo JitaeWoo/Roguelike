@@ -1,6 +1,4 @@
 ﻿using R3;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private PlayerRuntimeData _playerRuntimeData;
     private InputAction _moveAction;
+    private InputAction _dashAction;
 
     private void Awake()
     {
@@ -17,7 +16,8 @@ public class PlayerInputHandler : MonoBehaviour
             _playerInput = GetComponent<PlayerInput>();
         }
         _moveAction = _playerInput.actions["Move"];
-        if(_playerRuntimeData == null)
+        _dashAction = _playerInput.actions["Dash"];
+        if (_playerRuntimeData == null)
         {
             _playerRuntimeData = GetComponent<PlayerRuntimeData>();
         }
@@ -34,6 +34,12 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     private void Start()
+    {
+        MoveInput();
+        DashInput();
+    }
+
+    private void MoveInput()
     {
         // 입력이 변화할 때마다 _moveDir을 기록한다.
         Observable.FromEvent<InputAction.CallbackContext>(
@@ -55,6 +61,15 @@ public class PlayerInputHandler : MonoBehaviour
             f => _moveAction.started += f,
             f => _moveAction.started -= f)
             .Subscribe(moveDir => _playerRuntimeData.HasMoveInput = true)
+            .AddTo(this);
+    }
+
+    private void DashInput()
+    {
+        Observable.FromEvent<InputAction.CallbackContext>(
+            f => _dashAction.performed += f,
+            f => _dashAction.performed -= f)
+            .Subscribe(_ => _playerRuntimeData.DashTrigger())
             .AddTo(this);
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using R3;
 using UnityEngine;
 
 public class PlayerRuntimeData : MonoBehaviour
@@ -19,9 +18,19 @@ public class PlayerRuntimeData : MonoBehaviour
         }
     }
 
+    public bool IsDashOnColldown;
+    public bool CanDash = true;
+    private Subject<Unit> _dashEvent = new Subject<Unit>();
+    public Observable<Unit> DashEvent { get => _dashEvent.AsObservable(); }
+
+    public void DashTrigger()
+    {
+        _dashEvent.OnNext(Unit.Default);
+    }
+
     private void Awake()
     {
-        if(_rigid == null)
+        if (_rigid == null)
         {
             _rigid = GetComponent<Rigidbody2D>();
         }
