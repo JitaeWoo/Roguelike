@@ -6,20 +6,28 @@ public class PlayerState_Move : PlayerState
 {
     public PlayerState_Move(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data) : base(stateMachine, data)
     {
+        HasPhysics = true;
     }
 
     public override void Enter()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Exit()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+        if(!Data.HasMoveInput)
+        {
+            StateMachine.ChangeState(PlayerStates.Idle);
+        }
+    }
+
+    public override void FixedUpdate()
+    {
+        Data.Velocity = Data.MoveDir * Manager.Player.Data.MoveSpeed;
+    }
+
+    public override void Exit()
+    {
+        Data.Velocity = Vector2.zero;
     }
 }

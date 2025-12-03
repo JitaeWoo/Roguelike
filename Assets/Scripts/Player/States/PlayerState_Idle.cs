@@ -10,16 +10,17 @@ public class PlayerState_Idle : PlayerState
 
     public override void Enter()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Exit()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+        if(Data.HasMoveInput)
+        {
+            StateMachine.ChangeState(PlayerStates.Move);
+        }
+    }
+
+    public override void Exit()
+    {
     }
 }
