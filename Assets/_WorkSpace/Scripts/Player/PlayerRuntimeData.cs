@@ -18,11 +18,11 @@ public class PlayerRuntimeData : MonoBehaviour
         }
     }
 
-    public bool IsDashOnColldown;
+    public float DashCooldown = 2f;
+    public bool IsDashOnCooldown;
     public bool CanDash = true;
     private Subject<Unit> _dashEvent = new Subject<Unit>();
     public Observable<Unit> DashEvent { get => _dashEvent.AsObservable(); }
-
     public void DashTrigger()
     {
         _dashEvent.OnNext(Unit.Default);

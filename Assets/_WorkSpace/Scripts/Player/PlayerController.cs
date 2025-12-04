@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (_playerRuntimeData.CanDash && !_playerRuntimeData.IsDashOnColldown)
+        if (_playerRuntimeData.CanDash && !_playerRuntimeData.IsDashOnCooldown)
         {
             _stateMachine.ChangeState(PlayerStates.Dash);
         }
