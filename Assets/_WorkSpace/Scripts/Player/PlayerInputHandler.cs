@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private PlayerRuntimeData _playerRuntimeData;
     private InputAction _moveAction;
     private InputAction _dashAction;
+    private InputAction _attackAction;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         _moveAction = _playerInput.actions["Move"];
         _dashAction = _playerInput.actions["Dash"];
+        _attackAction = _playerInput.actions["Attack"];
         if (_playerRuntimeData == null)
         {
             _playerRuntimeData = GetComponent<PlayerRuntimeData>();
@@ -37,6 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         MoveInput();
         DashInput();
+        AttackInput();
     }
 
     private void MoveInput()
@@ -70,6 +73,15 @@ public class PlayerInputHandler : MonoBehaviour
             f => _dashAction.performed += f,
             f => _dashAction.performed -= f)
             .Subscribe(_ => _playerRuntimeData.Dash.Trigger())
+            .AddTo(this);
+    }
+
+    private void AttackInput()
+    {
+        Observable.FromEvent<InputAction.CallbackContext>(
+            f => _attackAction.performed += f,
+            f => _attackAction.performed -= f)
+            .Subscribe(_ => _playerRuntimeData.Attack.Trigger())
             .AddTo(this);
     }
 }

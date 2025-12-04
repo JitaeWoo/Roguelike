@@ -1,4 +1,3 @@
-using R3;
 using UnityEngine;
 
 public class PlayerRuntimeData : MonoBehaviour
@@ -19,6 +18,7 @@ public class PlayerRuntimeData : MonoBehaviour
     }
 
     public Dash Dash = new Dash();
+    public Attack Attack;
 
     private void Awake()
     {
@@ -26,5 +26,7 @@ public class PlayerRuntimeData : MonoBehaviour
         {
             _rigid = GetComponent<Rigidbody2D>();
         }
+
+        Attack = new Attack(transform);
     }
 }
