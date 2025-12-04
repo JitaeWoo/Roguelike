@@ -69,7 +69,7 @@ public class PlayerInputHandler : MonoBehaviour
         Observable.FromEvent<InputAction.CallbackContext>(
             f => _dashAction.performed += f,
             f => _dashAction.performed -= f)
-            .Subscribe(_ => _playerRuntimeData.DashTrigger())
+            .Subscribe(_ => _playerRuntimeData.Dash.Trigger())
             .AddTo(this);
     }
 }

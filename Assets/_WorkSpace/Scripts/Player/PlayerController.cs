@@ -23,17 +23,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerRuntimeData.DashEvent
+        _playerRuntimeData.Dash.Event
             .Subscribe(_ => Dash())
             .AddTo(this);
     }
 
     private void Dash()
     {
-        if (_playerRuntimeData.CanDash && !_playerRuntimeData.IsDashOnCooldown)
-        {
-            _stateMachine.ChangeState(PlayerStates.Dash);
-        }
+        _stateMachine.ChangeState(PlayerStates.Dash);
     }
 
     private void Update()

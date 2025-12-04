@@ -14,7 +14,6 @@ public class PlayerState_Dash : PlayerState
     {
         _dashDir = Data.MoveDir;
         DashTimer().Forget();
-        DashCooldown().Forget();
     }
 
     public override void Update()
@@ -38,15 +37,5 @@ public class PlayerState_Dash : PlayerState
         if (Data == null || StateMachine.CurStateEnum != PlayerStates.Dash) return;
 
         StateMachine.ChangeState(PlayerStates.Idle);
-    }
-
-    private async UniTaskVoid DashCooldown()
-    {
-        Data.IsDashOnCooldown = true;
-        await UniTask.Delay(TimeSpan.FromSeconds(Data.DashCooldown));
-
-        if (Data == null) return;
-
-        Data.IsDashOnCooldown = false;
     }
 }
