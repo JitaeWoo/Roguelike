@@ -122,8 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa16e5842175774ca0a1f461dcfff21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 177469088939873748}
-  _playerRuntimeData: {fileID: 4607795576706551752}
 --- !u!50 &528290961506101709
 Rigidbody2D:
   serializedVersion: 4
@@ -241,9 +239,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.23753428, a: 1}
+  m_Color: {r: 0, g: 0.4336455, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
