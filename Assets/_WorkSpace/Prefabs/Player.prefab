@@ -9,11 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4034586763581681548}
+  - component: {fileID: 4744452394276765483}
   - component: {fileID: 177469088939873748}
   - component: {fileID: 7972013409588280994}
   - component: {fileID: 4607795576706551752}
   - component: {fileID: 3666178637728486930}
   - component: {fileID: 528290961506101709}
+  - component: {fileID: 419571848889691762}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -37,6 +39,21 @@ Transform:
   - {fileID: 6507343528682291827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4744452394276765483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231812342044270045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f8241498a97164db0a42f75c7c939e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runtimeData: {fileID: 4607795576706551752}
+  _rigid: {fileID: 528290961506101709}
+  _input: {fileID: 177469088939873748}
 --- !u!114 &177469088939873748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb0b3ddf6784d14ea42119afe781913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigid: {fileID: 528290961506101709}
   MoveDir: {x: 0, y: 0}
   HasMoveInput: 0
 --- !u!114 &3666178637728486930
@@ -135,6 +151,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &419571848889691762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231812342044270045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 4744452394276765483}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &7932692282966265017
 GameObject:
   m_ObjectHideFlags: 0

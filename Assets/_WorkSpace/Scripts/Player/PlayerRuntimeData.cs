@@ -1,8 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerRuntimeData : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rigid;
+    private PlayerManager _playerManager;
+    private Rigidbody2D _rigid;
 
     public Vector2 MoveDir;
     public bool HasMoveInput;
@@ -20,13 +22,15 @@ public class PlayerRuntimeData : MonoBehaviour
     public Dash Dash = new Dash();
     public Attack Attack;
 
+    [Inject]
+    private void Init(PlayerManager manager, Rigidbody2D rigid)
+    {
+        _playerManager = manager;
+        _rigid = rigid;
+    }
+
     private void Awake()
     {
-        if (_rigid == null)
-        {
-            _rigid = GetComponent<Rigidbody2D>();
-        }
-
-        Attack = new Attack(transform);
+        Attack = new Attack(_playerManager, transform);
     }
 }

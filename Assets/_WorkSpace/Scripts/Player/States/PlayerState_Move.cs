@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerState_Move : PlayerState
 {
-    public PlayerState_Move(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data) : base(stateMachine, data)
+    public PlayerState_Move(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
     {
         HasPhysics = true;
     }
@@ -23,7 +24,7 @@ public class PlayerState_Move : PlayerState
 
     public override void FixedUpdate()
     {
-        Data.Velocity = Data.MoveDir * Manager.Player.Data.MoveSpeed;
+        Data.Velocity = Data.MoveDir * PlayerManager.Data.MoveSpeed;
     }
 
     public override void Exit()

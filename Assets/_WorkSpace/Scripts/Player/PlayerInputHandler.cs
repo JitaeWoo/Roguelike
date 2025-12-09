@@ -1,14 +1,23 @@
 ﻿using R3;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private PlayerRuntimeData _playerRuntimeData;
+    private PlayerInput _playerInput;
+    private PlayerRuntimeData _playerRuntimeData;
+
     private InputAction _moveAction;
     private InputAction _dashAction;
     private InputAction _attackAction;
+
+    [Inject]
+    private void Init(PlayerInput input, PlayerRuntimeData data)
+    {
+        _playerInput = input;
+        _playerRuntimeData = data;
+    }
 
     private void Awake()
     {

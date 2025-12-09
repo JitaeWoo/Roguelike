@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
+using Zenject;
 
 public class PlayerState_Dash : PlayerState
 {
     private Vector2 _dashDir;
-    public PlayerState_Dash(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data) : base(stateMachine, data)
+    public PlayerState_Dash(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
     {
         HasPhysics = true;
     }
@@ -22,7 +23,7 @@ public class PlayerState_Dash : PlayerState
 
     public override void FixedUpdate()
     {
-        Data.Velocity = _dashDir * Manager.Player.Data.DashSpeed;
+        Data.Velocity = _dashDir * PlayerManager.Data.DashSpeed;
     }
 
     public override void Exit()

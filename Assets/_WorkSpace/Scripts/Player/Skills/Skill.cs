@@ -5,7 +5,8 @@ using UnityEngine;
 
 public abstract class Skill
 {
-    protected Transform _player;
+    protected Transform Player;
+    protected PlayerManager PlayerManager;
 
     protected float Cooldown;
     private bool _isOnCooldown;
@@ -13,9 +14,11 @@ public abstract class Skill
     private Subject<Unit> _event = new Subject<Unit>();
     public Observable<Unit> Event { get => _event.AsObservable(); }
 
-    public Skill(Transform player = null)
+    public Skill(PlayerManager manager = null, Transform player = null)
     {
-        _player = player;
+        PlayerManager = manager;
+        Player = player;
+
     }
 
     public void Trigger()

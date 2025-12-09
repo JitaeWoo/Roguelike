@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerState_Idle : PlayerState
 {
-    public PlayerState_Idle(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data) : base(stateMachine, data)
+    public PlayerState_Idle(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
     {
     }
 

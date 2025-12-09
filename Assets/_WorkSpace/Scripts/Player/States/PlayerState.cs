@@ -9,9 +9,11 @@ public enum PlayerStates
 public abstract class PlayerState : BaseState<PlayerStates>
 {
     protected PlayerRuntimeData Data;
+    protected PlayerManager PlayerManager;
 
-    public PlayerState(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data) : base(stateMachine)
+    public PlayerState(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager playerManager) : base(stateMachine)
     {
         Data = data;
+        PlayerManager = playerManager;
     }
 }
