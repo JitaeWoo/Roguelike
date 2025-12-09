@@ -15,6 +15,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float _minRate;
     [SerializeField] private float _maxRate;
     [SerializeField] private int _maxDepth;
+    public int MaxDepth => _maxDepth;
 
     public MapNode MapGenerate()
     {
