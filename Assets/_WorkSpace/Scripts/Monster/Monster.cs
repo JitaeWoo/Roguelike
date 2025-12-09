@@ -18,7 +18,6 @@ public class Monster : MonoBehaviour, IDamagable
     private void Start()
     {
         Hp.Where(hp => hp <= 0)
-            .Skip(1)
             .Subscribe(v => Die())
             .AddTo(this);
     }

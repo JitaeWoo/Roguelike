@@ -1,4 +1,4 @@
-using Cinemachine;
+﻿using Cinemachine;
 using R3;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,14 +26,6 @@ public class StageManager : MonoBehaviour
         _diContainer = di;
     }
 
-    private void OnEnable()
-    {
-        _monsterCount.Where(count => count == 0)
-            .Skip(1)
-            .Subscribe(v => GoNextScene())
-            .AddTo(this);
-    }
-
     private void Start()
     {
         _root = _mapGenerator.MapGenerate();
@@ -45,6 +37,10 @@ public class StageManager : MonoBehaviour
         {
             MobGenerate(_root, 0);
         }
+
+        _monsterCount.Where(count => count == 0)
+            .Subscribe(v => GoNextScene())
+            .AddTo(this);
     }
 
     private void MobGenerate(MapNode node, int depth)
@@ -59,7 +55,6 @@ public class StageManager : MonoBehaviour
 
             Monster monster = Instantiate(_monsterPrefab, node.RoomRect.center, Quaternion.identity).GetComponent<Monster>();
             monster.Hp.Where(hp => hp <= 0)
-                .Skip(1)
                 .Subscribe(v => _monsterCount.Value--)
                 .AddTo(monster);
 
@@ -74,6 +69,7 @@ public class StageManager : MonoBehaviour
 
     private void GoNextScene()
     {
-        SceneManager.LoadScene("Stage");
+        Debug.Log("스테이지 클리어");
+        //SceneManager.LoadScene("Stage");
     }
 }

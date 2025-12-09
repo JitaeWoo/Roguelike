@@ -19,7 +19,7 @@ public class Attack : Skill
 
         if (count > 0)
         {
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 Vector2 dir = _targetColliders[i].transform.position - Player.position;
                 Vector2 mouse = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - Player.position;
