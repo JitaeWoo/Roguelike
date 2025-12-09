@@ -1,3 +1,4 @@
+using Cinemachine;
 using R3;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _monsterPrefab;
+    [SerializeField] private CinemachineVirtualCamera _playerCamera;
 
     private MapGenerator _mapGenerator;
     private ReactiveProperty<int> _monsterCount = new ReactiveProperty<int>();
@@ -36,7 +38,8 @@ public class StageManager : MonoBehaviour
     {
         _root = _mapGenerator.MapGenerate();
 
-        _diContainer.InstantiatePrefab(_playerPrefab, _root.LeftNode.RoomRect.center, Quaternion.identity, null);
+        GameObject player = _diContainer.InstantiatePrefab(_playerPrefab, _root.LeftNode.RoomRect.center, Quaternion.identity, null);
+        _playerCamera.Follow = player.transform;
 
         while (_monsterCount.Value <= 0)
         {
