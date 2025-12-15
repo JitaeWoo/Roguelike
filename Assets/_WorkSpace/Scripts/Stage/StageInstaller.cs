@@ -7,18 +7,6 @@ public class StageInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Binding<MapGenerator>(_mapGenerator);
-    }
-
-    private void Binding<T>(T instance)
-    {
-        if (instance == null)
-        {
-            Container.Bind<T>().FromComponentSibling().AsSingle();
-        }
-        else
-        {
-            Container.Bind<T>().FromInstance(instance).AsSingle();
-        }
+        Container.Binding<MapGenerator>(_mapGenerator);
     }
 }

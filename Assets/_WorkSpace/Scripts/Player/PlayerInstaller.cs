@@ -10,20 +10,8 @@ public class PlayerInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Binding<PlayerRuntimeData>(_runtimeData);
-        Binding<Rigidbody2D>(_rigid);
-        Binding<PlayerInput>(_input);
-    }
-
-    private void Binding<T>(T instance)
-    {
-        if (instance == null)
-        {
-            Container.Bind<T>().FromComponentSibling().AsSingle();
-        }
-        else
-        {
-            Container.Bind<T>().FromInstance(instance).AsSingle();
-        }
+        Container.Binding<PlayerRuntimeData>(_runtimeData);
+        Container.Binding<Rigidbody2D>(_rigid);
+        Container.Binding<PlayerInput>(_input);
     }
 }
