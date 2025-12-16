@@ -21,10 +21,6 @@ public class AfterImage : MonoBehaviour
     private void Init(SpriteRenderer renderer)
     {
         _renderer = renderer;
-    }
-
-    private void Start()
-    {
         _renderer.material = _material;
     }
 
