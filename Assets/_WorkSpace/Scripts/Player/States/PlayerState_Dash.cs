@@ -13,6 +13,7 @@ public class PlayerState_Dash : PlayerState
 
     public override void Enter()
     {
+        Data.IsDash.Value = true;
         _dashDir = Data.MoveDir;
         DashTimer().Forget();
     }
@@ -29,6 +30,7 @@ public class PlayerState_Dash : PlayerState
     public override void Exit()
     {
         Data.Velocity = Vector2.zero;
+        Data.IsDash.Value = false;
     }
 
     private async UniTaskVoid DashTimer()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,7 @@ public class PlayerState_Move : PlayerState
 
     public override void Enter()
     {
+        Data.IsMove.Value = true;
     }
 
     public override void Update()
@@ -30,5 +32,6 @@ public class PlayerState_Move : PlayerState
     public override void Exit()
     {
         Data.Velocity = Vector2.zero;
+        Data.IsMove.Value = false;
     }
 }

@@ -8,6 +8,7 @@ public class PlayerInstaller : MonoInstaller
     [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private PlayerInput _input;
     [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private AfterimageController _afterimage;
 
     public override void InstallBindings()
     {
@@ -15,5 +16,6 @@ public class PlayerInstaller : MonoInstaller
         Container.Binding<Rigidbody2D>(_rigid);
         Container.Binding<PlayerInput>(_input);
         Container.Binding<SpriteRenderer>(_renderer);
+        Container.Binding<AfterimageController>(_afterimage);
     }
 }
