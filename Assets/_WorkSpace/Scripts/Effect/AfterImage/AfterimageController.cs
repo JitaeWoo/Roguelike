@@ -15,14 +15,16 @@ public class AfterimageController : MonoBehaviour
 
     private ObjectPool<AfterImage> _pool;
 
-    private SpriteRenderer _renderer;
-
     CancellationTokenSource _sorce;
 
+    private SpriteRenderer _renderer;
+    private DiContainer _diContainer;
+
     [Inject]
-    private void Init(SpriteRenderer renderer)
+    private void Init(SpriteRenderer renderer, DiContainer di)
     {
         _renderer = renderer;
+        _diContainer = di;
     }
 
     private void Awake()
@@ -73,7 +75,7 @@ public class AfterimageController : MonoBehaviour
         {
             _pool.Get();
 
-            await UniTask.WaitForSeconds(_duration, cancellationToken: _sorce.Token);
+            await UniTask.WaitForSeconds(_interval, cancellationToken: _sorce.Token);
         }
     }
 
@@ -81,7 +83,7 @@ public class AfterimageController : MonoBehaviour
 
     private AfterImage CreatePool()
     {
-        AfterImage image = Instantiate(_afterimagePrefab).GetComponent<AfterImage>();
+        AfterImage image = _diContainer.InstantiatePrefab(_afterimagePrefab).GetComponent<AfterImage>();
         image.transform.parent = transform;
         image.SetInfo(_pool, _renderer, _duration);
 
