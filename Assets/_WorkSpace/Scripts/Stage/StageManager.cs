@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
 
             if (!success) return;
 
-            Monster monster = Instantiate(_monsterPrefab, node.RoomRect.center, Quaternion.identity).GetComponent<Monster>();
+            Monster monster = _diContainer.InstantiatePrefab(_monsterPrefab, node.RoomRect.center, Quaternion.identity, null).GetComponent<Monster>();
             monster.Hp.Where(hp => hp <= 0)
                 .Subscribe(v => _monsterCount.Value--)
                 .AddTo(monster);
