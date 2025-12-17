@@ -9,6 +9,7 @@ public class PlayerInstaller : MonoInstaller
     [SerializeField] private PlayerInput _input;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private AfterimageController _afterimage;
+    [SerializeField] private Animator _animator;
 
     public override void InstallBindings()
     {
@@ -17,5 +18,6 @@ public class PlayerInstaller : MonoInstaller
         Container.Binding<PlayerInput>(_input);
         Container.Binding<SpriteRenderer>(_renderer);
         Container.Binding<AfterimageController>(_afterimage);
+        Container.Binding<Animator>(_animator);
     }
 }

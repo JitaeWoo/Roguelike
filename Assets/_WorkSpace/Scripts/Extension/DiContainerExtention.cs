@@ -5,8 +5,9 @@ using Zenject;
 
 public static class DiContainerExtention
 {
-    public static void Binding<T>(this DiContainer container, T instance)
+    public static void Binding<T>(this DiContainer container, T instance) where T : Object
     {
+
         if (instance == null)
         {
             container.Bind<T>().FromComponentInChildren().AsSingle();
