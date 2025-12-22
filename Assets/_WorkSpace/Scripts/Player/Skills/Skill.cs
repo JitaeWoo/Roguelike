@@ -3,8 +3,10 @@ using R3;
 using System;
 using UnityEngine;
 
-public abstract class Skill
+public abstract class Skill : MonoBehaviour
 {
+    private SkillData _data;
+
     protected Transform Player;
     protected PlayerManager PlayerManager;
 
@@ -19,6 +21,11 @@ public abstract class Skill
         PlayerManager = manager;
         Player = player;
 
+    }
+
+    public void SetData(SkillData data)
+    {
+        _data = data;
     }
 
     public void Trigger()
