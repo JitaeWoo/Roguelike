@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SkillData : ScriptableObject
 {
-    public SkillTypes Type { get; private set; }
+    public SkillTypes Type { get; protected set; }
 }
