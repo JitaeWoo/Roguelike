@@ -17,7 +17,6 @@ public class SkillManager : MonoBehaviour
     private Dictionary<SkillTypes, Skill>[] _skillDict;
     private SkillTypes[] _curType;
 
-
     private void Awake()
     {
         if(Dash == null)
