@@ -18,19 +18,21 @@ public class StageManager : MonoBehaviour
     private MapNode _root;
 
     private DiContainer _diContainer;
+    private PlayerManager _playerManager;
 
     [Inject]
-    private void Init(MapGenerator map, DiContainer di)
+    private void Init(MapGenerator map, DiContainer di, PlayerManager playerManager)
     {
         _mapGenerator = map;
+        _playerManager = playerManager;
         _diContainer = di;
     }
 
     private void Start()
     {
         _root = _mapGenerator.MapGenerate();
-
-        GameObject player = _diContainer.InstantiatePrefab(_playerPrefab, _root.LeftNode.RoomRect.center, Quaternion.identity, null);
+        
+        GameObject player = _playerManager.SpawnPlayer(_root.LeftNode.RoomRect.center);
         _playerCamera.Follow = player.transform;
 
         while (_monsterCount.Value <= 0)
