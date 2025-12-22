@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class PlayerManager
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
 
