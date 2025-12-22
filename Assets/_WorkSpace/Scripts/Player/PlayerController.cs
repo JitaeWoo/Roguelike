@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerManager _playerManager;
     private PlayerRuntimeData _playerRuntimeData;
+    private SkillManager _skillManager;
     private StateMachine<PlayerStates> _stateMachine = new StateMachine<PlayerStates>();
 
     [Inject]
-    private void init(PlayerManager manager, PlayerRuntimeData data)
+    private void init(PlayerManager manager, PlayerRuntimeData data, SkillManager skillManager)
     {
         _playerManager = manager;
         _playerRuntimeData = data;
+        _skillManager = skillManager;
     }
 
     private void Awake()
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerRuntimeData.Dash.Event
+        _skillManager.Dash.Event
             .Subscribe(_ => Dash())
             .AddTo(this);
     }

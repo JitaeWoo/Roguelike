@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerManagerPrefab: {fileID: 7622371607152858890, guid: d1d014a1e57154c45b8849b3b0c4f44a, type: 3}
+  _skillManagerPrefab: {fileID: 6342645746015905947, guid: 8862d9ace5546af43b3d69762bb4478c, type: 3}

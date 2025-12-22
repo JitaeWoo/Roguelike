@@ -20,21 +20,11 @@ public class PlayerRuntimeData : MonoBehaviour
         }
     }
 
-    public Dash Dash = new Dash();
-    public Attack Attack;
-
-    private PlayerManager _playerManager;
     private Rigidbody2D _rigid;
 
     [Inject]
-    private void Init(PlayerManager manager, Rigidbody2D rigid)
+    private void Init(Rigidbody2D rigid)
     {
-        _playerManager = manager;
         _rigid = rigid;
-    }
-
-    private void Awake()
-    {
-        Attack = new Attack(_playerManager, transform);
     }
 }

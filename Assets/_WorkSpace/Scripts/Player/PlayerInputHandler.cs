@@ -7,31 +7,25 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private PlayerRuntimeData _playerRuntimeData;
+    private SkillManager _skillManager;
 
     private InputAction _moveAction;
     private InputAction _dashAction;
     private InputAction _attackAction;
 
     [Inject]
-    private void Init(PlayerInput input, PlayerRuntimeData data)
+    private void Init(PlayerInput input, PlayerRuntimeData data, SkillManager skillManager)
     {
         _playerInput = input;
         _playerRuntimeData = data;
+        _skillManager = skillManager;
     }
 
     private void Awake()
     {
-        if (_playerInput == null)
-        {
-            _playerInput = GetComponent<PlayerInput>();
-        }
         _moveAction = _playerInput.actions["Move"];
         _dashAction = _playerInput.actions["Dash"];
         _attackAction = _playerInput.actions["Attack"];
-        if (_playerRuntimeData == null)
-        {
-            _playerRuntimeData = GetComponent<PlayerRuntimeData>();
-        }
     }
 
     private void OnEnable()
@@ -81,7 +75,7 @@ public class PlayerInputHandler : MonoBehaviour
         Observable.FromEvent<InputAction.CallbackContext>(
             f => _dashAction.performed += f,
             f => _dashAction.performed -= f)
-            .Subscribe(_ => _playerRuntimeData.Dash.Trigger())
+            .Subscribe(_ => _skillManager.Dash.Trigger())
             .AddTo(this);
     }
 
@@ -90,7 +84,7 @@ public class PlayerInputHandler : MonoBehaviour
         Observable.FromEvent<InputAction.CallbackContext>(
             f => _attackAction.performed += f,
             f => _attackAction.performed -= f)
-            .Subscribe(_ => _playerRuntimeData.Attack.Trigger())
+            .Subscribe(_ => _skillManager.UseSkill(0))
             .AddTo(this);
     }
 }
