@@ -2,13 +2,11 @@ using Cysharp.Threading.Tasks;
 using R3;
 using System;
 using UnityEngine;
+using Zenject;
 
 public abstract class Skill : MonoBehaviour
 {
-    private SkillData _data;
-
-    protected Transform Player;
-    protected PlayerManager PlayerManager;
+    protected SkillData Data;
 
     protected float Cooldown;
     private bool _isOnCooldown;
@@ -16,16 +14,19 @@ public abstract class Skill : MonoBehaviour
     private Subject<Unit> _event = new Subject<Unit>();
     public Observable<Unit> Event { get => _event.AsObservable(); }
 
-    public Skill(PlayerManager manager = null, Transform player = null)
-    {
-        PlayerManager = manager;
-        Player = player;
+    protected PlayerManager Player;
+    protected DiContainer DiContainer;
 
+    [Inject]
+    private void Init(PlayerManager playerManager, DiContainer di)
+    {
+        Player = playerManager;
+        DiContainer = di;
     }
 
     public void SetData(SkillData data)
     {
-        _data = data;
+        Data = data;
     }
 
     public void Trigger()
