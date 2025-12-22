@@ -8,7 +8,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
 
     public PlayerData Data = new PlayerData();
-    public Transform Transform;
+    private Transform _transform;
+    public Vector3 Position => _transform.position;
 
     private DiContainer _diContainer;
 
@@ -22,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     {
         GameObject player = _diContainer.InstantiatePrefab(_playerPrefab, position, Quaternion.identity, null);
 
-        Transform = player.transform;
+        _transform = player.transform;
 
         return player;
     }
