@@ -43,6 +43,8 @@ public class StageManager : MonoBehaviour
         _monsterCount.Where(count => count == 0)
             .Subscribe(v => GoNextScene())
             .AddTo(this);
+
+        _playerManager.Data.Skill1.Value = "Shot1";
     }
 
     private void MobGenerate(MapNode node, int depth)

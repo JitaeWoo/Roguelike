@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using R3;
+using System;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
+using Zenject;
 
 public enum SkillTypes
 {
@@ -17,9 +17,21 @@ public class SkillManager : MonoBehaviour
     private Dictionary<SkillTypes, Skill>[] _skillDict;
     private SkillTypes[] _curType;
 
+    private DiContainer _diContainer;
+
+    [Inject]
+    private void Init(PlayerManager playerManager, DataManager dataManager, DiContainer di)
+    {
+        playerManager.Data.Skill1
+            .Where(str => !string.IsNullOrEmpty(str))
+            .Subscribe(str => SetSkill(dataManager.SkillDatas[str], 0))
+            .AddTo(this);
+        _diContainer = di;
+    }
+
     private void Awake()
     {
-        if(Dash == null)
+        if (Dash == null)
         {
             Dash = transform.GetChild(0).gameObject.GetComponent<Dash>();
         }
@@ -27,14 +39,14 @@ public class SkillManager : MonoBehaviour
         _skillDict = new Dictionary<SkillTypes, Skill>[transform.childCount - 1];
         _curType = new SkillTypes[transform.childCount - 1];
 
-        for(int i = 1; i < transform.childCount; i++)
+        for (int i = 1; i < transform.childCount; i++)
         {
             _skillDict[i - 1] = new Dictionary<SkillTypes, Skill>();
 
             Transform skill = transform.GetChild(i);
             for (int j = 0; j < _skillList.Length; j++)
             {
-                GameObject child = Instantiate(_skillList[j], skill);
+                GameObject child = _diContainer.InstantiatePrefab(_skillList[j], skill);
                 child.name = _skillList[j].name;
                 if (Enum.TryParse(child.name, out SkillTypes type))
                 {
@@ -54,7 +66,7 @@ public class SkillManager : MonoBehaviour
 
     public void SetSkill(SkillData data, int index)
     {
-        if(data.Type != _curType[index] && _curType[index] != SkillTypes.Size)
+        if (data.Type != _curType[index] && _curType[index] != SkillTypes.Size)
         {
             _skillDict[index][_curType[index]].gameObject.SetActive(false);
         }
