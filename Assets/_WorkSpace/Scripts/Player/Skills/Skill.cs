@@ -8,7 +8,6 @@ public abstract class Skill : MonoBehaviour
 {
     protected SkillData Data;
 
-    protected float Cooldown;
     private bool _isOnCooldown;
     public bool CanUse = true;
     private Subject<Unit> _event = new Subject<Unit>();
@@ -44,7 +43,7 @@ public abstract class Skill : MonoBehaviour
     private async UniTaskVoid StartCooldown()
     {
         _isOnCooldown = true;
-        await UniTask.Delay(TimeSpan.FromSeconds(Cooldown));
+        await UniTask.Delay(TimeSpan.FromSeconds(Data.Cooldown));
         _isOnCooldown = false;
     }
 }

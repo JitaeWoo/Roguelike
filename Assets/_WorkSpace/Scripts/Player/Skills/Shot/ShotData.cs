@@ -8,7 +8,6 @@ public class ShotData : SkillData
     public Sprite Sprite;
     public float Damage;
     public float ShotSpeed;
-    public float CoolDown;
 
     private void Awake()
     {
