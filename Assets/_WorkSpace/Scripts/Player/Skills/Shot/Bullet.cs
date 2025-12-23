@@ -7,6 +7,8 @@ using Zenject;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private LayerMask _targetLayerMask;
+
     public ObjectPool<Bullet> ParentPool;
 
     private float _damage;
@@ -41,12 +43,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || _isDestroy) return;
+        if ((_targetLayerMask.value & (1 << other.gameObject.layer)) == 0 || _isDestroy) return;
 
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Enemy")
+        if(LayerMask.LayerToName(other.gameObject.layer) == "Enemy")
         {
             other.gameObject.GetComponent<IDamagable>().TakeDamage(_playerManager.Data.Damage + _damage);
-            
         }
 
         ParentPool.Release(this);

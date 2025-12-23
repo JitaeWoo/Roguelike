@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot1
   m_EditorClassIdentifier: 
   Name: Shot1
-  Sprite: {fileID: -2322180950842035098, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  Cooldown: 0.5
+  Sprite: {fileID: -244698570, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
   Damage: 2
   ShotSpeed: 2
-  CoolDown: 1
