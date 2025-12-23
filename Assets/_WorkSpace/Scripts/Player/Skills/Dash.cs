@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Dash : Skill
 {
-    public Dash()
+    [SerializeField] private DashData _data;
+
+    private void Awake()
     {
-        Cooldown = 2f;
+        Data = _data;    
     }
 
     protected override void ActivateSkill()

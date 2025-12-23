@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanUse: 1
+  _data: {fileID: 11400000, guid: 05e0d39c1a575d5459499a64ab24c0df, type: 2}
