@@ -5,37 +5,43 @@ using Zenject;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    private PlayerInput _playerInput;
     private PlayerRuntimeData _playerRuntimeData;
     private SkillManager _skillManager;
+    PlayerInputAsset _asset;
 
     private InputAction _moveAction;
     private InputAction _dashAction;
     private InputAction _attackAction;
 
     [Inject]
-    private void Init(PlayerInput input, PlayerRuntimeData data, SkillManager skillManager)
+    private void Init(PlayerRuntimeData data, SkillManager skillManager)
     {
-        _playerInput = input;
         _playerRuntimeData = data;
         _skillManager = skillManager;
     }
 
     private void Awake()
     {
-        _moveAction = _playerInput.actions["Move"];
-        _dashAction = _playerInput.actions["Dash"];
-        _attackAction = _playerInput.actions["Attack"];
+        _asset = new PlayerInputAsset();
+
+        _moveAction = _asset.Player.Move;
+        _dashAction = _asset.Player.Dash;
+        _attackAction = _asset.Player.Attack;
     }
 
     private void OnEnable()
     {
-        _moveAction.Enable();
+        _asset.Enable();
     }
 
     private void OnDisable()
     {
-        _moveAction.Disable();
+        _asset.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        _asset.Dispose();
     }
 
     private void Start()
