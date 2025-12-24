@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameManager : MonoBehaviour
 {
-    private int _curStage;
+    private int _curStage = 1;
     public int CurStage => _curStage;
 
     public void StageClear()

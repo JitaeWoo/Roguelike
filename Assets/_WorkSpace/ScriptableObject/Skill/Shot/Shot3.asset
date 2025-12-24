@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d7b93f4074f14e4f8f07c894bb55a94, type: 3}
-  m_Name: Shot1
+  m_Name: Shot3
   m_EditorClassIdentifier: 
-  Name: Shot1
+  Name: Shot3
   Cooldown: 0.5
-  Sprite: {fileID: -244698570, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  Damage: 3
+  Sprite: {fileID: -1913701574, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  Damage: 15
   ShotSpeed: 2

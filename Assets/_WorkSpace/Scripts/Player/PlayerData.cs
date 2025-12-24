@@ -7,7 +7,7 @@ public class PlayerData
 {
     public float MoveSpeed = 3f;
     public float DashSpeed = 10f;
-    public float Damage = 10f;
+    public float Damage = 5f;
 
     public ReactiveProperty<string> Skill1 = new ReactiveProperty<string>();
 }

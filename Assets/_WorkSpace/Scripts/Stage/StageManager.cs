@@ -46,7 +46,7 @@ public class StageManager : MonoBehaviour
             .Subscribe(v => StageClear())
             .AddTo(this);
 
-        _playerManager.Data.Skill1.Value = "Shot1";
+        _playerManager.Data.Skill1.Value = $"Shot{_gameManager.CurStage}";
     }
 
     private void MobGenerate(MapNode node, int depth)
