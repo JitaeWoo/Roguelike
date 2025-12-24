@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class PlayerManager : MonoBehaviour
@@ -22,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject SpawnPlayer(Vector2 position = default)
     {
         GameObject player = _diContainer.InstantiatePrefab(_playerPrefab, position, Quaternion.identity, null);
+        player.transform.SetParent(null);
+        SceneManager.MoveGameObjectToScene(player, SceneManager.GetActiveScene());
 
         _transform = player.transform;
 
