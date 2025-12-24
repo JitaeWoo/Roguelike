@@ -8,7 +8,7 @@ public class BaseUI : MonoBehaviour
     private Dictionary<string, GameObject> gameObjectDic;
     private Dictionary<string, Component> componentDic;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         RectTransform[] transforms = GetComponentsInChildren<RectTransform>(true);
         gameObjectDic = new Dictionary<string, GameObject>(transforms.Length * 4);
