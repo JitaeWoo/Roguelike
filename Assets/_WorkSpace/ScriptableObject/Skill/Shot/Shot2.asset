@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b93f4074f14e4f8f07c894bb55a94, type: 3}
   m_Name: Shot2
   m_EditorClassIdentifier: 
-  Name: Shot2
-  Cooldown: 0.5
-  Sprite: {fileID: 1757635303, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  Damage: 5
-  ShotSpeed: 6
+  _name: Shot2
+  _cooldown: 0.5
+  _sprite: {fileID: 1757635303, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  _damage: 5
+  _shotSpeed: 6

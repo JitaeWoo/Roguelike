@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class SkillData : ScriptableObject
 {
     public SkillTypes Type { get; protected set; }
-    public string Name;
-    public float Cooldown;
+
+    [SerializeField] private string _name;
+    [SerializeField] private float _cooldown;
+
+    public string Name => _name;
+    public float Cooldown => _cooldown;
 }
