@@ -1,4 +1,5 @@
-﻿using R3;
+﻿using Cysharp.Threading.Tasks.CompilerServices;
+using R3;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class SkillManager : MonoBehaviour
 
     private Dictionary<SkillTypes, Skill>[] _skillDict;
     private SkillTypes[] _curType;
+    public Subject<Unit>[] _skillEvent;
 
     private DiContainer _diContainer;
 
@@ -38,6 +40,7 @@ public class SkillManager : MonoBehaviour
 
         _skillDict = new Dictionary<SkillTypes, Skill>[transform.childCount - 1];
         _curType = new SkillTypes[transform.childCount - 1];
+        _skillEvent = new Subject<Unit>[transform.childCount - 1];
 
         for (int i = 1; i < transform.childCount; i++)
         {
@@ -80,6 +83,12 @@ public class SkillManager : MonoBehaviour
     {
         if (_curType[index] == SkillTypes.Size) return;
 
+        _skillEvent[index].OnNext(Unit.Default);
         _skillDict[index][_curType[index]].Trigger();
+    }
+
+    public Subject<Unit> GetSkillEvent(int index)
+    {
+        return _skillEvent[index];
     }
 }
