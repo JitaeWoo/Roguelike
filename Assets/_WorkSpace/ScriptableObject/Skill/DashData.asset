@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: DashData
   m_EditorClassIdentifier: Assembly-CSharp::DashData
-  Name: Dash
-  Cooldown: 1
+  _name: Dash
+  _cooldown: 1
