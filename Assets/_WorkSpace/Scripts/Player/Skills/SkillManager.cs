@@ -17,7 +17,7 @@ public class SkillManager : MonoBehaviour
 
     private Dictionary<SkillTypes, Skill>[] _skillDict;
     private SkillTypes[] _curType;
-    public Subject<Unit>[] _skillEvent;
+    public Subject<Unit>[] _skillChangeEvent;
 
     private DiContainer _diContainer;
 
@@ -38,26 +38,29 @@ public class SkillManager : MonoBehaviour
             Dash = transform.GetChild(0).gameObject.GetComponent<Dash>();
         }
 
-        _skillDict = new Dictionary<SkillTypes, Skill>[transform.childCount - 1];
-        _curType = new SkillTypes[transform.childCount - 1];
-        _skillEvent = new Subject<Unit>[transform.childCount - 1];
+        int count = transform.childCount - 1;
 
-        for (int i = 1; i < transform.childCount; i++)
+        _skillDict = new Dictionary<SkillTypes, Skill>[count];
+        _curType = new SkillTypes[count];
+        _skillChangeEvent = new Subject<Unit>[count];
+
+        for (int i = 0; i < count; i++)
         {
-            _skillDict[i - 1] = new Dictionary<SkillTypes, Skill>();
+            _skillDict[i] = new Dictionary<SkillTypes, Skill>();
+            _skillChangeEvent[i] = new Subject<Unit>();
 
-            Transform skill = transform.GetChild(i);
+            Transform skill = transform.GetChild(i + 1);
             for (int j = 0; j < _skillList.Length; j++)
             {
                 GameObject child = _diContainer.InstantiatePrefab(_skillList[j], skill);
                 child.name = _skillList[j].name;
                 if (Enum.TryParse(child.name, out SkillTypes type))
                 {
-                    _skillDict[i - 1].Add(type, child.GetComponent<Skill>());
+                    _skillDict[i].Add(type, child.GetComponent<Skill>());
 
                     child.SetActive(false);
 
-                    _curType[i - 1] = SkillTypes.Size;
+                    _curType[i] = SkillTypes.Size;
                 }
                 else
                 {
@@ -77,18 +80,25 @@ public class SkillManager : MonoBehaviour
         _curType[index] = data.Type;
         _skillDict[index][data.Type].gameObject.SetActive(true);
         _skillDict[index][data.Type].SetData(data);
+        _skillChangeEvent[index].OnNext(Unit.Default);
     }
 
     public void UseSkill(int index)
     {
         if (_curType[index] == SkillTypes.Size) return;
 
-        _skillEvent[index].OnNext(Unit.Default);
         _skillDict[index][_curType[index]].Trigger();
     }
 
-    public Subject<Unit> GetSkillEvent(int index)
+    public Skill GetSkill(int index)
     {
-        return _skillEvent[index];
+        if (_curType[index] == SkillTypes.Size) return null;
+
+        return _skillDict[index][_curType[index]];
+    }
+
+    public Subject<Unit> GetSkillChangeEvent(int index)
+    {
+        return _skillChangeEvent[index];
     }
 }
