@@ -8,6 +8,7 @@ public abstract class Skill : MonoBehaviour
 {
     protected SkillData Data;
 
+    public float CoolDown => Data.Cooldown;
     private bool _isOnCooldown;
     public bool CanUse = true;
     private Subject<Unit> _event = new Subject<Unit>();
