@@ -12,7 +12,7 @@ public abstract class Skill : MonoBehaviour
     private bool _isOnCooldown;
     public bool CanUse = true;
     private Subject<Unit> _event = new Subject<Unit>();
-    public Observable<Unit> Event { get => _event.AsObservable(); }
+    public Subject<Unit> Event => _event;
 
     protected PlayerManager Player;
     protected DiContainer DiContainer;
