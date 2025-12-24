@@ -16,4 +16,4 @@ MonoBehaviour:
   Cooldown: 0.5
   Sprite: {fileID: 1757635303, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
   Damage: 5
-  ShotSpeed: 2
+  ShotSpeed: 6
