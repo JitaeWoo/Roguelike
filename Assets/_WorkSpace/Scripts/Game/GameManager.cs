@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void GameClear()
     {
-
+        // TODO : 클리어 화면으로
+        Debug.Log("GameClear");
     }
 }

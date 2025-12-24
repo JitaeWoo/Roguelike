@@ -45,6 +45,8 @@ public class Monster : MonoBehaviour, IDamagable
     {
         _collider.enabled = false;
 
-        _renderer.material.DOFloat(0, "_SplitValue", 1f).OnComplete(() => Destroy(gameObject));
+        _renderer.material
+            .DOFloat(0, "_SplitValue", 1f).OnComplete(() => Destroy(gameObject))
+            .SetLink(gameObject);
     }
 }

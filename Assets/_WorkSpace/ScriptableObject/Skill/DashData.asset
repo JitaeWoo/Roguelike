@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DashData
   m_EditorClassIdentifier: Assembly-CSharp::DashData
   Name: Dash
-  Cooldown: 2
+  Cooldown: 1

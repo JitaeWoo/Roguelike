@@ -39,6 +39,7 @@ public class AfterImage : MonoBehaviour
 
         _renderer.material.SetFloat("_AfterimageValue", 1);
 
-        _renderer.material.DOFloat(0, "_AfterimageValue", _duration).OnComplete(() => _parentPool.Release(this));
+        _renderer.material.DOFloat(0, "_AfterimageValue", _duration).OnComplete(() => _parentPool.Release(this))
+            .SetLink(gameObject);
     }
 }
