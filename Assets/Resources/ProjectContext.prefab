@@ -77,3 +77,4 @@ MonoBehaviour:
   _playerManagerPrefab: {fileID: 7622371607152858890, guid: d1d014a1e57154c45b8849b3b0c4f44a, type: 3}
   _skillManagerPrefab: {fileID: 6342645746015905947, guid: 8862d9ace5546af43b3d69762bb4478c, type: 3}
   _dataManagerPrefab: {fileID: 7350505421052485859, guid: 26294c2aec9ba3f4a8ec98245868de8d, type: 3}
+  _gameManagerPrefab: {fileID: 8030933466601440222, guid: e247b3266999a6c46a2da9b7c8a55aff, type: 3}

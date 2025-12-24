@@ -19,13 +19,15 @@ public class StageManager : MonoBehaviour
 
     private DiContainer _diContainer;
     private PlayerManager _playerManager;
+    private GameManager _gameManager;
 
     [Inject]
-    private void Init(MapGenerator map, DiContainer di, PlayerManager playerManager)
+    private void Init(MapGenerator map, DiContainer di, PlayerManager playerManager, GameManager gameManager)
     {
         _mapGenerator = map;
         _playerManager = playerManager;
         _diContainer = di;
+        _gameManager = gameManager;
     }
 
     private void Start()
@@ -41,7 +43,7 @@ public class StageManager : MonoBehaviour
         }
 
         _monsterCount.Where(count => count == 0)
-            .Subscribe(v => GoNextScene())
+            .Subscribe(v => StageClear())
             .AddTo(this);
 
         _playerManager.Data.Skill1.Value = "Shot1";
@@ -71,9 +73,8 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    private void GoNextScene()
+    private void StageClear()
     {
-        Debug.Log("스테이지 클리어");
-        //SceneManager.LoadScene("Stage");
+        _gameManager.StageClear();
     }
 }
