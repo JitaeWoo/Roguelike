@@ -10,6 +10,7 @@ public class MonsterState_Die : MonsterState
 
     public override void Enter()
     {
+        Data.IsDead.Value = true;
     }
 
     public override void Update()

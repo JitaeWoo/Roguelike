@@ -25,6 +25,8 @@ public class MonsterState_Chase : MonsterState
 
     public override void Enter()
     {
+        Data.IsChase.Value = true;
+
         _chase.OnExit
             .TakeWhile(_ => StateMachine.CurStateEnum == MonsterStates.Chase)
             .Subscribe(_ => StateMachine.ChangeState(MonsterStates.Idle))
@@ -45,5 +47,6 @@ public class MonsterState_Chase : MonsterState
 
     public override void Exit()
     {
+        Data.IsChase.Value = false;
     }
 }
