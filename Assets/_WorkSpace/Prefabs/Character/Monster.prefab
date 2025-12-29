@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1927529447874315759}
   - component: {fileID: 857824413711769818}
   - component: {fileID: 5390377285289943327}
-  - component: {fileID: 4440012901133291023}
   - component: {fileID: 2143869919464196520}
+  - component: {fileID: 8736499023279498085}
+  - component: {fileID: 1633125467536692460}
   m_Layer: 6
   m_Name: Monster
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5390377285289943327}
   _collider: {fileID: 2143869919464196520}
+  _data: {fileID: 1633125467536692460}
 --- !u!212 &5390377285289943327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -120,19 +122,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4440012901133291023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936225318688222812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75f13ebfa2b8d944f97992fd8933ba4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hpSetting: 20
 --- !u!58 &2143869919464196520
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +157,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8736499023279498085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936225318688222812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c3d4960a050ba4fa93925ffc297168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1633125467536692460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936225318688222812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2834f49c0e12d6f42a2cf7476f629d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 20
+  Hp: 20
+  MoveSpeed: 5
