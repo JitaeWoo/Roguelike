@@ -1,3 +1,4 @@
+using R3;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +14,13 @@ public class MonsterController : MonoBehaviour
     private StateMachine<MonsterStates> _stateMachine = new StateMachine<MonsterStates>();
 
     private DiContainer _diContainer;
+    private MonsterData _data;
 
     [Inject]
-    private void Init(DiContainer di)
+    private void Init(DiContainer di, MonsterData data)
     {
         _diContainer = di;
+        _data = data;
     }
 
     private void Awake()
@@ -34,6 +37,14 @@ public class MonsterController : MonoBehaviour
         _diContainer.Inject(die);
 
         _stateMachine.ChangeState(MonsterStates.Idle);
+    }
+
+    private void Start()
+    {
+        _data.Hp
+            .Where(hp => hp <= 0)
+            .Subscribe(_ => _stateMachine.ChangeState(MonsterStates.Die))
+            .AddTo(this);
     }
 
     private void Update()

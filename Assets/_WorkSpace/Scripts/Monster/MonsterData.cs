@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterData : MonoBehaviour
 {
     public float Damage = 20f;
-    public float Hp = 20f;
+    public ReactiveProperty<float> Hp = new ReactiveProperty<float>(20f);
     public float MoveSpeed = 5f;
 
     public ReactiveProperty<bool> IsChase = new ReactiveProperty<bool>();

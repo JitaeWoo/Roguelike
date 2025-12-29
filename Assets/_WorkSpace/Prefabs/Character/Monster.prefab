@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5987021267219385106}
   - component: {fileID: 1927529447874315759}
   - component: {fileID: 857824413711769818}
+  - component: {fileID: 1053656800976273609}
   - component: {fileID: 5390377285289943327}
   - component: {fileID: 5530692888495755388}
   - component: {fileID: 2143869919464196520}
@@ -74,6 +75,18 @@ MonoBehaviour:
   _data: {fileID: 1633125467536692460}
   _chase: {fileID: 2418266903271942222}
   _rigid: {fileID: 5530692888495755388}
+--- !u!114 &1053656800976273609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936225318688222812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d5c34f4862d3d49a7c8e4b95feb469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &5390377285289943327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +239,7 @@ GameObject:
   - component: {fileID: 9211783026052851279}
   - component: {fileID: 9168936741839889747}
   - component: {fileID: 2418266903271942222}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ChaseCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
