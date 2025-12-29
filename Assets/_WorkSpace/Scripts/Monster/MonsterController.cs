@@ -14,6 +14,7 @@ public class MonsterController : MonoBehaviour
 
     private DiContainer _diContainer;
 
+    [Inject]
     private void Init(DiContainer di)
     {
         _diContainer = di;
