@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 20
   Hp: 20
-  MoveSpeed: 5
+  MoveSpeed: 2
 --- !u!1 &1283458375192754551
 GameObject:
   m_ObjectHideFlags: 0

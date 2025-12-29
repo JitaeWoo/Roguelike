@@ -48,5 +48,6 @@ public class MonsterState_Chase : MonsterState
     public override void Exit()
     {
         Data.IsChase.Value = false;
+        _rigid.velocity = Vector2.zero;
     }
 }
