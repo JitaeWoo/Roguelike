@@ -6,7 +6,7 @@ using Zenject;
 
 public class PlayerState_Move : PlayerState
 {
-    public PlayerState_Move(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
+    public PlayerState_Move(StateMachine<PlayerStates> stateMachine) : base(stateMachine)
     {
         HasPhysics = true;
     }

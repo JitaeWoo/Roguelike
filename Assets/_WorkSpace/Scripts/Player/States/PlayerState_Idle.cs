@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerState_Idle : PlayerState
 {
-    public PlayerState_Idle(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
+
+    public PlayerState_Idle(StateMachine<PlayerStates> stateMachine) : base(stateMachine)
     {
     }
 

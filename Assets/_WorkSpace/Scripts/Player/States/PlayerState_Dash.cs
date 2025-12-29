@@ -6,7 +6,7 @@ using Zenject;
 public class PlayerState_Dash : PlayerState
 {
     private Vector2 _dashDir;
-    public PlayerState_Dash(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager manager) : base(stateMachine, data, manager)
+    public PlayerState_Dash(StateMachine<PlayerStates> stateMachine) : base(stateMachine)
     {
         HasPhysics = true;
     }

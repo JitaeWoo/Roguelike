@@ -4,24 +4,29 @@ using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerManager _playerManager;
-    private PlayerRuntimeData _playerRuntimeData;
     private SkillManager _skillManager;
     private StateMachine<PlayerStates> _stateMachine = new StateMachine<PlayerStates>();
+    private DiContainer _diContainer;
 
     [Inject]
-    private void init(PlayerManager manager, PlayerRuntimeData data, SkillManager skillManager)
+    private void init(SkillManager skillManager, DiContainer di)
     {
-        _playerManager = manager;
-        _playerRuntimeData = data;
         _skillManager = skillManager;
+        _diContainer = di;
     }
 
     private void Awake()
     {
-        _stateMachine.AddState(PlayerStates.Idle, new PlayerState_Idle(_stateMachine, _playerRuntimeData, _playerManager));
-        _stateMachine.AddState(PlayerStates.Move, new PlayerState_Move(_stateMachine, _playerRuntimeData, _playerManager));
-        _stateMachine.AddState(PlayerStates.Dash, new PlayerState_Dash(_stateMachine, _playerRuntimeData, _playerManager));
+        PlayerState_Idle idle = new PlayerState_Idle(_stateMachine);
+        PlayerState_Move move = new PlayerState_Move(_stateMachine);
+        PlayerState_Dash dash = new PlayerState_Dash(_stateMachine);
+
+        _stateMachine.AddState(PlayerStates.Idle, idle);
+        _diContainer.Inject(idle);
+        _stateMachine.AddState(PlayerStates.Move, move);
+        _diContainer.Inject(move);
+        _stateMachine.AddState(PlayerStates.Dash, dash);
+        _diContainer.Inject(dash);
 
         _stateMachine.ChangeState(PlayerStates.Idle);
     }

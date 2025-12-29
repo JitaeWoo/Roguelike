@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public enum PlayerStates
 {
@@ -11,9 +12,14 @@ public abstract class PlayerState : BaseState<PlayerStates>
     protected PlayerRuntimeData Data;
     protected PlayerManager PlayerManager;
 
-    public PlayerState(StateMachine<PlayerStates> stateMachine, PlayerRuntimeData data, PlayerManager playerManager) : base(stateMachine)
+    [Inject]
+    private void Init(PlayerRuntimeData data, PlayerManager manager)
     {
         Data = data;
-        PlayerManager = playerManager;
+        PlayerManager = manager;
+    }
+
+    protected PlayerState(StateMachine<PlayerStates> stateMachine) : base(stateMachine)
+    {
     }
 }
