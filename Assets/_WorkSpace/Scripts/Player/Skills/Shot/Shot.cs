@@ -30,6 +30,11 @@ public class Shot : Skill
             return;
         }
 
+        if(data.Sfx != null)
+        {
+            Audio.SfxPlay(data.Sfx);
+        }
+
         _bulletPool.Get();
     }
 

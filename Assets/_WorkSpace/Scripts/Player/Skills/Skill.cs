@@ -20,12 +20,14 @@ public abstract class Skill : MonoBehaviour
 
     protected PlayerManager Player;
     protected DiContainer DiContainer;
+    protected AudioManager Audio;
 
     [Inject]
-    private void Init(PlayerManager playerManager, DiContainer di)
+    private void Init(PlayerManager playerManager, DiContainer di, AudioManager audio)
     {
         Player = playerManager;
         DiContainer = di;
+        Audio = audio;
     }
 
     private void OnEnable()
