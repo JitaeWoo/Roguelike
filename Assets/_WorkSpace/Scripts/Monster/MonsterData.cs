@@ -11,6 +11,8 @@ public class MonsterData : MonoBehaviour
     public ReactiveProperty<float> Hp = new ReactiveProperty<float>();
     public float MoveSpeed = 5f;
 
+    public AudioData DeadSfx;
+
     public ReactiveProperty<bool> IsChase = new ReactiveProperty<bool>();
     public ReactiveProperty<bool> IsDead = new ReactiveProperty<bool>();
 

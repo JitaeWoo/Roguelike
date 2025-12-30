@@ -231,6 +231,7 @@ MonoBehaviour:
   _hp: 20
   Damage: 20
   MoveSpeed: 2
+  DeadSfx: {fileID: 11400000, guid: b0f604e805816644bbd7fddb1dd65689, type: 2}
 --- !u!114 &4768639869498313200
 MonoBehaviour:
   m_ObjectHideFlags: 0

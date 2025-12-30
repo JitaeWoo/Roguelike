@@ -1,10 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using R3;
-using System;
-using System.Diagnostics;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
