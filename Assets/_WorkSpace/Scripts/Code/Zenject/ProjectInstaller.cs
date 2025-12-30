@@ -7,6 +7,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private GameObject _skillManagerPrefab;
     [SerializeField] private GameObject _dataManagerPrefab;
     [SerializeField] private GameObject _gameManagerPrefab;
+    [SerializeField] private GameObject _audioManagerPrefab;
 
     public override void InstallBindings()
     {
@@ -14,5 +15,6 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<SkillManager>().FromComponentInNewPrefab(_skillManagerPrefab).AsSingle();
         Container.Bind<DataManager>().FromComponentInNewPrefab(_dataManagerPrefab).AsSingle();
         Container.Bind<GameManager>().FromComponentInNewPrefab(_gameManagerPrefab).AsSingle();
+        Container.Bind<AudioManager>().FromComponentInNewPrefab(_audioManagerPrefab).AsSingle();
     }
 }

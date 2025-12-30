@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using Zenject;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioData _bgmData;
+    [SerializeField] private GameObject _sfxPrefab;
 
     public ObjectPool<SfxController> SfxPool { get; private set; }
 
@@ -24,6 +26,14 @@ public class AudioManager : MonoBehaviour
     public float _sfxVolume = 1f;
 
     private AudioSource _bgmSource;
+
+    private DiContainer _diContainer;
+
+    [Inject]
+    private void Init(DiContainer di)
+    {
+        _diContainer = di;
+    }
 
     private void Awake()
     {
@@ -70,16 +80,16 @@ public class AudioManager : MonoBehaviour
 
     private SfxController CreateSfx()
     {
-        GameObject obj = new GameObject("SfxController");
+        GameObject obj = _diContainer.InstantiatePrefab(_sfxPrefab);
         obj.transform.parent = transform;
-        AudioSource audioSource = obj.AddComponent<AudioSource>();
+        AudioSource audioSource = obj.GetComponent<AudioSource>();
 
         audioSource.spatialBlend = 1.0f;       
         audioSource.minDistance = 5f;        
         audioSource.maxDistance = 30f;      
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
 
-        return obj.AddComponent<SfxController>();
+        return obj.GetComponent<SfxController>();
     }
 
     private void GetSfx(SfxController sfx)
