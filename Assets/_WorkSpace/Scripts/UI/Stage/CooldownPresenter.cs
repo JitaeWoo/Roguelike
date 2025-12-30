@@ -44,6 +44,11 @@ public class CooldownPresenter : BaseUI
                 
             }).AddTo(this);
 
+        if(_skillManager.GetSkill(0) != null)
+        {
+            _skill1Image.sprite = _skillManager.GetSkill(0).Data.SkillSprite;
+        }
+
         _skillManager.GetSkillChangeEvent(0)
             .Select(_ => _skillManager.GetSkill(0))
             .Where(s => s != null)
