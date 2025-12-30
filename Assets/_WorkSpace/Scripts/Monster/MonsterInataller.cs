@@ -8,6 +8,7 @@ public class MonsterInataller : MonoInstaller
     [SerializeField] private MonsterData _data;
     [SerializeField] private MonsterChaseCollider _chase;
     [SerializeField] private Rigidbody2D _rigid;
+    [SerializeField] private Animator _animator;
 
     public override void InstallBindings()
     {
@@ -16,5 +17,6 @@ public class MonsterInataller : MonoInstaller
         Container.Binding<MonsterData>(_data);
         Container.Binding<MonsterChaseCollider>(_chase);
         Container.Binding<Rigidbody2D>(_rigid);
+        Container.Binding<Animator>(_animator);
     }
 }

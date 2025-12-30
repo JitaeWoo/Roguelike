@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2143869919464196520}
   - component: {fileID: 8736499023279498085}
   - component: {fileID: 1633125467536692460}
+  - component: {fileID: 4768639869498313200}
   - component: {fileID: 2615323822207406709}
   m_Layer: 6
   m_Name: Monster
@@ -76,6 +77,7 @@ MonoBehaviour:
   _data: {fileID: 1633125467536692460}
   _chase: {fileID: 2418266903271942222}
   _rigid: {fileID: 5530692888495755388}
+  _animator: {fileID: 2615323822207406709}
 --- !u!114 &1053656800976273609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +230,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 20
   MoveSpeed: 2
+--- !u!114 &4768639869498313200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936225318688222812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0feeffdc79bbf3f4b98fa3aae6fe61eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2615323822207406709
 Animator:
   serializedVersion: 5
