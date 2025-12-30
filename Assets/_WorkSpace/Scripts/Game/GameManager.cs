@@ -39,5 +39,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
         _playerManager.Data.Hp.Value = 100;
+        _curStage = 1;
     }
 }
