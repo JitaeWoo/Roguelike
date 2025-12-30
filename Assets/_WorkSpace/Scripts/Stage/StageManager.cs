@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
 
     private MapGenerator _mapGenerator;
     private ReactiveProperty<int> _monsterCount = new ReactiveProperty<int>();
+    public ReactiveProperty<int> MonsterCount => _monsterCount;
 
     private MapNode _root;
 
