@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Zenject;
 
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private Tilemap _tilemap;
-    [SerializeField] private Tile _backgroundTile;
-    [SerializeField] private RuleTile _roomTile;
+    [SerializeField] private List<Tile> _backgroundTile;
+    [SerializeField] private List<RuleTile> _roomTile;
 
     [SerializeField] private Vector2Int _mapSize;
 
@@ -16,6 +17,14 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float _maxRate;
     [SerializeField] private int _maxDepth;
     public int MaxDepth => _maxDepth;
+
+    private GameManager _gameManager;
+
+    [Inject]
+    private void Init(GameManager gameManager)
+    {
+        _gameManager = gameManager;
+    }
 
     public MapNode MapGenerate()
     {
@@ -85,7 +94,7 @@ public class MapGenerator : MonoBehaviour
         {
             for(int j = (int)leftCenter.y - 1; j <= (int)leftCenter.y + 1; j++)
             {
-                _tilemap.SetTile(new Vector3Int(i, j, 0), _roomTile);
+                _tilemap.SetTile(new Vector3Int(i, j, 0), _roomTile[_gameManager.CurStage / 3]);
             }
         }
 
@@ -93,7 +102,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = (int)rightCenter.x - 1; j <= (int)rightCenter.x + 1; j++)
             {
-                _tilemap.SetTile(new Vector3Int(j, i, 0), _roomTile);
+                _tilemap.SetTile(new Vector3Int(j, i, 0), _roomTile[_gameManager.CurStage / 3]);
             }
         }
 
@@ -106,7 +115,7 @@ public class MapGenerator : MonoBehaviour
         for(int i = -10; i < _mapSize.x + 10; i++)
             for(int j = -10; j < _mapSize.y + 10; j++)
             {
-                _tilemap.SetTile(new Vector3Int(i - _mapSize.x / 2, j - _mapSize.y / 2), _backgroundTile);
+                _tilemap.SetTile(new Vector3Int(i - _mapSize.x / 2, j - _mapSize.y / 2), _backgroundTile[_gameManager.CurStage / 3]);
             }
     }
 
@@ -116,7 +125,7 @@ public class MapGenerator : MonoBehaviour
         { 
             for(int j = rect.y - 1; j <= rect.y + rect.height; j++)
             {
-                _tilemap.SetTile(new Vector3Int(i, j, 0), _roomTile);
+                _tilemap.SetTile(new Vector3Int(i, j, 0), _roomTile[_gameManager.CurStage / 3]);
             }
         }
     }

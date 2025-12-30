@@ -9,7 +9,7 @@ using Zenject;
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
-    [SerializeField] private GameObject _monsterPrefab;
+    [SerializeField] private List<GameObject> _monsterPrefab;
     [SerializeField] private CinemachineVirtualCamera _playerCamera;
 
     private MapGenerator _mapGenerator;
@@ -47,7 +47,7 @@ public class StageManager : MonoBehaviour
             .Subscribe(v => StageClear())
             .AddTo(this);
 
-        _playerManager.Data.Skill1.Value = $"Shot{_gameManager.CurStage}";
+        _playerManager.Data.Skill1.Value = $"Shot{(_gameManager.CurStage + 1) / 3  + 1}";
     }
 
     private void MobGenerate(MapNode node, int depth)
@@ -60,7 +60,7 @@ public class StageManager : MonoBehaviour
 
             if (!success) return;
 
-            MonsterData monster = _diContainer.InstantiatePrefab(_monsterPrefab, node.RoomRect.center, Quaternion.identity, null).GetComponent<MonsterData>();
+            MonsterData monster = _diContainer.InstantiatePrefab(_monsterPrefab[_gameManager.CurStage / 3], node.RoomRect.center, Quaternion.identity, null).GetComponent<MonsterData>();
             monster.IsDead.Where(value => value)
                 .Subscribe(v => _monsterCount.Value--)
                 .AddTo(monster);

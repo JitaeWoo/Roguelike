@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d7b93f4074f14e4f8f07c894bb55a94, type: 3}
-  m_Name: Shot2
+  m_Name: Shot4
   m_EditorClassIdentifier: 
-  _name: Shot2
-  _cooldown: 0.8
-  _skillSprite: {fileID: 1757635303, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
+  _name: Shot4
+  _cooldown: 0.5
+  _skillSprite: {fileID: -1917579073, guid: 19664380c5bb989429295b8423d44d52, type: 3}
   _sfx: {fileID: 11400000, guid: a0d2a181f7ae51042af7c96a8f9e8c50, type: 2}
-  _sprite: {fileID: 1757635303, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  _damage: 5
+  _sprite: {fileID: -1917579073, guid: 19664380c5bb989429295b8423d44d52, type: 3}
+  _damage: 30
   _shotSpeed: 6

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot3
   m_EditorClassIdentifier: 
   _name: Shot3
-  _cooldown: 0.5
+  _cooldown: 0.6
   _skillSprite: {fileID: -1913701574, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
   _sfx: {fileID: 11400000, guid: a0d2a181f7ae51042af7c96a8f9e8c50, type: 2}
   _sprite: {fileID: -1913701574, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}

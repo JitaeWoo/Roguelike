@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4768639869498313200}
   - component: {fileID: 2615323822207406709}
   m_Layer: 6
-  m_Name: Monster
+  m_Name: Monster3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 8596640243658272642, guid: 5d4daff38e3d9174b873918abcf2c1d4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.11814082, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2834f49c0e12d6f42a2cf7476f629d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 20
-  Damage: 20
-  MoveSpeed: 2
+  _hp: 40
+  Damage: 50
+  MoveSpeed: 4
 --- !u!114 &4768639869498313200
 MonoBehaviour:
   m_ObjectHideFlags: 0

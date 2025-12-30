@@ -7,7 +7,7 @@ using Zenject;
 
 public class GameManager : MonoBehaviour
 {
-    private int _curStage = 1;
+    private int _curStage = 0;
     public int CurStage => _curStage;
 
     private PlayerManager _playerManager;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        if(_curStage == 3)
+        if(_curStage == 8)
         {
             GameClear();
             return;
@@ -39,6 +39,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
         _playerManager.Data.Hp.Value = 100;
-        _curStage = 1;
+        _curStage = 0;
     }
 }
