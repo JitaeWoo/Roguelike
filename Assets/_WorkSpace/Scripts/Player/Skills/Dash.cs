@@ -6,9 +6,9 @@ public class Dash : Skill
 {
     [SerializeField] private DashData _data;
 
-    private void Awake()
+    private void Start()
     {
-        Data = _data;    
+        SetData(_data);
     }
 
     protected override void ActivateSkill()

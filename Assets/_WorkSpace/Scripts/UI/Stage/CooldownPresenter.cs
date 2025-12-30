@@ -4,6 +4,7 @@ using R3;
 using System;
 using System.Diagnostics;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -11,6 +12,8 @@ public class CooldownPresenter : BaseUI
 {
     private Slider _dashCooldown;
     private Slider _skill1Cooldown;
+
+    private Image _skill1Image;
 
     private SkillManager _skillManager;
 
@@ -25,6 +28,8 @@ public class CooldownPresenter : BaseUI
         base.Awake();
         _dashCooldown = GetUI<Slider>("DashCool");
         _skill1Cooldown = GetUI<Slider>("Skill1Cool");
+
+        _skill1Image = GetUI<Image>("Skill1Image");
     }
 
     private void Start()
@@ -38,7 +43,6 @@ public class CooldownPresenter : BaseUI
                     .SetLink(_dashCooldown.gameObject);
                 
             }).AddTo(this);
-
 
         _skillManager.GetSkillChangeEvent(0)
             .Select(_ => _skillManager.GetSkill(0))
@@ -62,6 +66,16 @@ public class CooldownPresenter : BaseUI
                 _skill1Cooldown.DOValue(0, _skillManager.GetSkill(0).CoolDown)
                     .SetEase(Ease.Linear)
                     .SetLink(_skill1Cooldown.gameObject);
+            })
+            .AddTo(this);
+
+
+        _skillManager.GetSkillChangeEvent(0)
+            .Select(_ => _skillManager.GetSkill(0))
+            .Where(s => s != null)
+            .Subscribe(s =>
+            {
+                _skill1Image.sprite = s.Data.SkillSprite;
             })
             .AddTo(this);
     }

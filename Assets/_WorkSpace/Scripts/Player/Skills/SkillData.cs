@@ -8,7 +8,9 @@ public abstract class SkillData : ScriptableObject
 
     [SerializeField] private string _name;
     [SerializeField] private float _cooldown;
+    [SerializeField] private Sprite _skillSprite;
 
     public string Name => _name;
     public float Cooldown => _cooldown;
+    public Sprite SkillSprite => _skillSprite;
 }

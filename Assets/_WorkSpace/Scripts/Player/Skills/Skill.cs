@@ -8,7 +8,7 @@ using Zenject;
 
 public abstract class Skill : MonoBehaviour
 {
-    protected SkillData Data;
+    public SkillData Data { get; private set; }
 
     public float CoolDown => Data.Cooldown;
     private bool _isOnCooldown;
