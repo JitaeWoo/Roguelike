@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     private void GameClear()
     {
         SceneManager.LoadScene("Clear");
+        _playerManager.Data.Hp.Value = 100;
+        _curStage = 0;
     }
 
     public void GameOver()
